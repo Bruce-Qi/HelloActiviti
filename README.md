@@ -12,7 +12,7 @@ OA系统、电子政务等常用工作流处理。
 工作流管理系统(Workflow Management System, WfMS)是一个软件系统，它完成工作量的定义和管理，并按照在系统中预先定义好的工作流规则进行工作流实例的执行。工作流管理系统不是企业的业务系统，而是为企业的业务系统的运行提供了一个软件的支撑环境。
 
 #常见工作流引擎
-引擎框架：OSWorkFlow、JBPM、Activity(是对JBPM的升级).
+引擎框架：OSWorkFlow、JBPM、Activiti(是对JBPM的升级).
 
 
 工作流引擎
