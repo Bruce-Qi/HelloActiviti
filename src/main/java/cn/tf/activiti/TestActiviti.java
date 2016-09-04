@@ -1,4 +1,4 @@
-package cn.tf.activity;
+package cn.tf.activiti;
 
 import java.util.List;
 
@@ -80,7 +80,7 @@ public class TestActiviti {
 		//取服务
 		RuntimeService runtimeService=processEngine.getRuntimeService();
 		//取得流程实例
-		ProcessInstance pi = runtimeService.startProcessInstanceByKey(processDefKit);
+		ProcessInstanceAndTask pi = runtimeService.startProcessInstanceByKey(processDefKit);
 		
 		System.out.println("流程实例id:"+pi.getId());
 		System.out.println("流程定义id:"+pi.getProcessDefinitionId());
