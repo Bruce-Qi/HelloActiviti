@@ -76,9 +76,9 @@ public class ProcessVariable {
 	}
 	*/
 	//设置流程变量值
-	@Test
+	//@Test
 	public void setVariable(){
-		String taskId="1804";//任务id
+		String taskId="704";//任务id
 		//采用TaskService来设置流程变量
 		
 		//1. 第一次设置流程变量
@@ -113,9 +113,78 @@ public class ProcessVariable {
 
 	}
 
+	@Test
+	public void getVariable(){
+		String taskId="704";
+		
+		//读取实现序列化的对象变量数据
+		TaskService taskService = processEngine.getTaskService();
+		AppayBillBean appayBillBean=(AppayBillBean) taskService.getVariable(taskId, "appayBillBean");
+		System.out.println(appayBillBean.getCost());
+		System.out.println(appayBillBean.getAppayPerson());
+				
+	}
 	
 	
 	
+	
+	
+	//模拟流程变量设置
+		@Test
+		public void  getAndSetProcessVariable(){
+			//有两种服务可以设置流程变量
+//			TaskService taskService = processEngine.getTaskService();
+//			RuntimeService runtimeService = processEngine.getRuntimeService();
+			
+			/**1.通过 runtimeService 来设置流程变量
+			 * exxcutionId: 执行对象
+			 * variableName：变量名
+			 * values：变量值
+			 */
+//			runtimeService.setVariable(exxcutionId, variableName, values);
+//			runtimeService.setVariableLocal(executionId, variableName, values);
+			//设置本执行对象的变量 ，该变量的作用域只在当前的execution对象
+//			runtimeService.setVariables(exxcutionId, variables); 
+			  //可以设置多个变量  放在 Map<key,value>  Map<String,Object>
+			
+			/**2. 通过TaskService来设置流程变量
+			 * taskId：任务id
+			 */
+//			taskService.setVariable(taskId, variableName, values);
+//			taskService.setVariableLocal(taskId, variableName, values);
+////			设置本执行对象的变量 ，该变量的作用域只在当前的execution对象
+//			taskService.setVariables(taskId, variables); //设置的是Map<key,values>
+			
+			/**3. 当流程开始执行的时候，设置变量参数
+			 * processDefiKey: 流程定义的key
+			 * variables： 设置多个变量  Map<key,values>
+			 */
+//			processEngine.getRuntimeService()
+//			.startProcessInstanceByKey(processDefiKey, variables)
+			
+			/**4. 当执行任务时候，可以设置流程变量
+			 * taskId:任务id
+			 * variables： 设置多个变量  Map<key,values>
+			 */
+//			processEngine.getTaskService().complete(taskId, variables);
+			
+			
+			/** 5. 通过RuntimeService取变量值
+			 * exxcutionId： 执行对象
+			 * 
+			 */
+//			runtimeService.getVariable(exxcutionId, variableName);//取变量
+//			runtimeService.getVariableLocal(exxcutionId, variableName);//取本执行对象的某个变量
+//			runtimeService.getVariables(variablesName);//取当前执行对象的所有变量
+			/** 6. 通过TaskService取变量值
+			 * TaskId： 执行对象
+			 * 
+			 */
+//			taskService.getVariable(taskId, variableName);//取变量
+//			taskService.getVariableLocal(taskId, variableName);//取本执行对象的某个变量
+//			taskService.getVariables(taskId);//取当前执行对象的所有变量
+		}
+
 	
 	
 	
